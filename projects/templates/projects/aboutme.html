@@ -1,0 +1,71 @@
+{% extends 'projects/base.html' %}
+{% load static %}
+
+{% block banner %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({% static '/photo_2020-04-09_01-04-45.jpg' %});
+  height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-text button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px 25px;
+  color: black;
+  background-color: #ddd;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hero-text button:hover {
+  background-color: #555;
+  color: white;
+}
+</style>
+            <div class="hero-image">
+                <div class="hero-text">
+                    <img src="{% static 'Headshot 1.jpeg' %}" class="rounded mx-auto d-block">
+                    <h1 class="display-4 font-weight-normal">Samuel Quek</h1>
+                    <p class="lead font-weight-normal">Multi-faceted creative based in Singapore covering the mediums of art, design & media.</p>
+                    <a href="{% url 'home' %}" class="btn btn-light">Back to home</a>
+                </div>
+            </div>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>About me</h1>
+    <div class="container">
+<p>Multi-faceted creative based in singapore covering the mediums ot art, design and media.
+    Also worked on various projects in Europe to produce and curate content for marketing content.
+    Being exposed to many physical elements of design and creation has sparked my passion for creative work and photography.
+    Being able to put my passions of design and photography is something i’ve been very lucky to be given the opportunity to do.
+</p>
+</div>
+</div>
+{% endblock %}

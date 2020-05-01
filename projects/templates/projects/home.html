@@ -1,0 +1,87 @@
+{% extends 'projects/base.html' %}
+{% load static %}
+
+{% block banner %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({% static '/photo_2020-04-09_01-04-25.jpg' %});
+  height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-text button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px 25px;
+  color: black;
+  background-color: #ddd;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hero-text button:hover {
+  background-color: #555;
+  color: white;
+}
+</style>
+</head>
+            <div class="hero-image">
+                <div class="hero-text">
+                    <img src="{% static 'Headshot 1.jpeg' %}" class="rounded mx-auto d-block">
+                    <h1 class="display-4 font-weight-normal">Samuel Quek</h1>
+                    <p class="lead font-weight-normal">Multi-faceted creative based in Singapore covering the mediums of art, design & media.</p>
+                    <a href="{% url 'aboutme' %}" class="btn btn-light">About me</a>
+                    <a href="mailto:samuelquek23@gmail.com" class="btn btn-light">Collaborate with me</a>
+                    <a href="{% static 'samuelquekresume.pdf' %}" class="btn btn-light">CV</a>
+                </div>
+            </div>
+{% endblock %}
+
+{% block body %}
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            {% for project in projects.all %}
+            <div class="col-md-4">
+                <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+                    <a href="{% url 'project' project.id %}">
+                        <div class="card text-center rounded-pill overflow-hidden">
+                            <div class="my-3 p-3">
+                                <h2 class="display-5">{{ project.name }}</h2>
+                                <p class="lead">{{ project.summary }}</p>
+                            </div>
+                            <div class="bg-dark shadow-sm mx-auto"><img class="card-img-top"
+                                                                        src="{{ project.thumbnail.url }}">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
